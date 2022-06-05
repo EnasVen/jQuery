@@ -359,6 +359,58 @@ siblings和end範例
 # Closest
 > closest(selector) : 回傳自己或者最接近自己的上一層元素，不像parent一樣，closest會繼續往上搜尋直到找到為止。  
 
+範例(表單上色):
+```
+<body>
+    <div class="container">
+        <table class="table table-bordered">
+            <tr>
+                <td><input type="checkbox"><label> 1 </label></td>
+                <td>Jack</td>
+                <td>0910123456</td>
+                <td>Jack@test.com</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"><label> 2 </label></td>
+                <td>Mary</td>
+                <td>0932123456</td>
+                <td>Mary@test.com</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"><label> 3 </label></td>
+                <td>Jimmy</td>
+                <td>0921123456</td>
+                <td>Jimmy@test.com</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"><label> 4 </label></td>
+                <td>David</td>
+                <td>0939123456</td>
+                <td>David@test.com</td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(":checkbox").click(function(){
+            // $(this).parent().parent().css("background-color","lightblue");
+            // $(this).parents("tr").css("background-color","lightblue");
+            // $(this).closest("tr").css("background-color","lightblue");
+
+            let chk = $(this).prop("checked");
+            if(chk){
+                $(this).closest("tr").css("background-color","lightblue");
+            }else{
+                $(this).closest("tr").css("background-color","transparent");
+            }
+        })
+
+
+
+    </script>
+</body>
+```
 
 # Bootstrap5
 Google搜尋Boostrap5可使用現成版型，包含樣式與位置，只需link樣式進HTML文件即可!  
