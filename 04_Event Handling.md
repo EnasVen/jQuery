@@ -49,7 +49,7 @@ selector.hover( function1 , function2 );  //第一個引數控制進入時的動
 selector.index();
 ```
 範例(注意優先度 mousedown > mouseup > mouseclick):
-```
+```diff
 <body>
     <input id="idbut" type="button" value="button">
     <div>div<br><span>span</span></div>
@@ -84,17 +84,17 @@ selector.index();
             //     alert("mouseleave");
             // });
             
-            // $('#idbut').mousedown(function(){
-            //     alert("mousedown");
-            // });
++            // $('#idbut').mousedown(function(){
++            //     alert("mousedown");
++            // });
             
-            $('#idbut').mouseup(function(){
-                alert("mouseup");
-            });
++            $('#idbut').mouseup(function(){
++                alert("mouseup");
++            });
             
-            $('#idbut').click(function(){
-                alert("click");
-            });           
++            $('#idbut').click(function(){
++                alert("click");
++            });           
 
         })
     </script>
@@ -234,7 +234,7 @@ document event :
 
 window event :
 1. scroll() : 滑鼠在視窗捲軸上滾動時觸發
-2. resize() : 瀏覽器大小改變時觸發
+2. resize() : 瀏覽器大小改變時觸發，注意resize時可能會觸發scroll的效果(check console.log)  
 
 範例:
 ```
