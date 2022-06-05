@@ -360,7 +360,7 @@ siblings和end範例
 > closest(selector) : 回傳自己或者最接近自己的上一層元素，不像parent一樣，closest會繼續往上搜尋直到找到為止。  
 
 範例(表單上色):
-```
+```diff
 <body>
     <div class="container">
         <table class="table table-bordered">
@@ -400,9 +400,9 @@ siblings和end範例
 
             let chk = $(this).prop("checked");
             if(chk){
-                $(this).closest("tr").css("background-color","lightblue");
++                $(this).closest("tr").css("background-color","lightblue");
             }else{
-                $(this).closest("tr").css("background-color","transparent");
++                $(this).closest("tr").css("background-color","transparent");
             }
         })
 
