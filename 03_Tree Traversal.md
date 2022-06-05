@@ -164,9 +164,201 @@ next和prev範例:
 
 
 # Parent & Child
+parent() action包含以下種類:
+> parent[selector]) : 回傳目前元素的上一層(selector)元素(父元素)，注意不包含本身!  
+> parents([selector]) : 回傳目前元素上面所有層級(selector)的元素，直到html元素  
+> parentsUntil([selector] , [filter]) : 回傳目前元素的上面所有層級，符合filter條件且直到selector之下的所有層級元素
+
+parent範例:
+```
+head>
+    <meta charset="UTF-8">
+    <title>04parentTraversing.html</title>
+    <style>
+        .level-1 * { 
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+        ul .item-b{
+            border:2px dotted orchid;           
+        }
+    </style>
+</head>
+<body>body
+    <ul class="level-1" style="width:500px" >ul
+        <li class="item-i">I</li>
+        <li class="item-ii">II
+          <ul class="level-2">ul
+            <li class="item-a">A</li>
+            <li class="item-b">B(self)
+                <ul class="level-3">ul
+                    <li class="item-1">1</li>
+                </ul>
+            </li>
+            <li class="item-c">C</li>
+          </ul>
+        </li>       
+      </ul>
+      <hr>
+    <input type="button" id="btn1" value="parent()">
+    <input type="button" id="btn2" value="parents()">
+    <input type="button" id="btn3" value="parentsUntil()">
+    <input type="button" id="btn4" value="closest()"> 
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+        $("#btn1").click(function(){
+            $(".item-b").parent().css( "border", "solid 2px red" );
+        });
+
+        $("#btn2").click(function(){
+            // $(".item-b").parents("ul").css( "border", "solid 2px green" ); //只有ul
+            $(".item-b").parents().css( "border", "solid 2px green" );  //ul,li,body,html              
+        });
+
+        $("#btn3").click(function(){    
+            $( ".item-b" ).parentsUntil('body').css( "border", "solid 2px blue" );  //body以下即ul,li           
+        });
+
+        $("#btn4").click(function(){ 
+            $(".item-b").closest("li").css( "border", "solid 2px fuchsia" ); 
+            //closest("ul")
+        });           
+    </script>
+</body>
+```
+
+child() action包含以下種類:
+> children[selector]) : 回傳目前元素的下一層(selector)元素(子元素)，注意只找一層!  
+> find(selector) : 回符合selector的所有層級子元素  
+
+child範例:
+```
+<head>
+    <meta charset="UTF-8">
+    <title>05descendantsTraversing.html</title>
+    <style>
+        .level-1 * { 
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+        ul .item-ii{
+            border:2px dotted orchid;
+        }
+    </style>
+</head>
+<body>body(grandparent)
+    <ul class="level-1" style="width:500px" >ul(direct parent)
+        <li class="item-i">I</li>
+        <li class="item-ii">II(self)
+          <ul class="level-2">ul(children)
+            <li class="item-a">A</li>
+            <li class="item-b">B
+                <ul class="level-3">
+                    <li class="item-1">1</li>                    
+                </ul>
+            </li>
+            <li class="item-c">C</li>
+          </ul>
+        </li>       
+      </ul>
+      <hr>
+      <input type="button" id="btn1" value="children()">
+    <input type="button" id="btn2" value="find('li')">
+    <input type="button" id="btn3" value="find('*')">
+   
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+        $("#btn1").click(function(){
+            $( "ul .item-ii" ).children().css( "border", "solid 2px red" );  //ul 
+            // $( "ul .level-2" ).children().css( "border", "solid 2px red" );  //多個li,只找一層
+
+            //.level-2的children是.item-a,.item-b,.item-c多個兒子         
+        });
+
+        $("#btn2").click(function(){                
+            $( "ul .item-ii" ).find("li").css( "border", "solid 2px green" ); //以下所有li
+            // $( "ul .item-ii" ).find("ul").css( "border", "solid 2px green" ); //以下所有ul
+        });
+
+        $("#btn3").click(function(){               
+            $( "ul .item-ii" ).find("*").css( "border", "solid 2px blue" );//以下所有li,ul
+        });         
+    </script>
+</body>
+```
 
 # Siblings and End
+此二actions定義如下:
+> siblings([selector]) : 回傳自己以外同層級的所有元素
+> end() : 結束目前chain搜尋的所有過濾操作，將符合的選擇器返回到先前狀態!(回到$符號)
 
+siblings範例
+```
+<head>
+    <meta charset="UTF-8">
+    <title>06siblingendTraversing.html</title>
+    <style> 
+            .level-1 * { 
+                display: block;
+                border: 2px solid lightgrey;
+                color: lightgrey;
+                padding: 5px;
+                margin: 15px;
+            }       
+            .item-iv{
+                border:2px dotted orchid  ;
+            }
+        </style>
+    
+</head>
+<body>
+    <ul class="level-1" style="width:500px" >ul(direct parent)
+        <li class="item-i">I</li>
+        <li class="item-ii">II</li>
+        <li class="item-iii">III</li>
+        <li class="item-iv">IV(self)
+            <ul class="level-2">ul(children)
+                <li class="item-a">A</li>            
+            </ul>
+        </li>
+        <li class="item-v">V</li>
+        <li class="item-vi">VI</li>
+        <li class="item-vii">VII</li>       
+    </ul>
+    <hr>
+    <input type="button" id="btn1" value="siblings()">
+    <input type="button" id="btn2" value="end()">
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+        $("#btn1").click(function(){
+            $( ".item-iv" ).siblings().css( "border", "solid 2px aqua" );  //I,II,II,V,VI,VII             
+        });
+
+        $("#btn2").click(function(){
+            $( "ul.level-1" )
+                .find(".item-a")
+                .css( "border", "solid 2px blue" )
+                .end()
+                .find(".item-ii")
+                .css("border","solid 2px red");         
+        });
+    </script>
+</body>
+```
+
+end範例:
+```
+詳見寶可夢圖片選擇實作!
+```
 # Closest
 
 # Bootstrap5
