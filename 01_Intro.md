@@ -115,3 +115,4 @@ $(this).css("attr"); //回傳css attr設定值，為字串
 ```
 因此，欲套用jQuery chain action，回傳結果就必須是jQuery selector!!  
 
+詳細語法可觀看W3School API介紹:  https://www.w3schools.com/jquery/default.asp
