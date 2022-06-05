@@ -110,7 +110,7 @@ selector.index();
 5. val() / val("value") : 讀取表單第一個元素的值 / 設定表單所有元素值
 
 範例:
-```
+```diff
 <div class="container">
        <input  class="form-control" id="idText" type="text">
        <h1 >hello, <span id="showName"></span></h1>
@@ -130,7 +130,7 @@ selector.index();
             //輸入值在#showName顯示
             // let value = $(this).val();
             // $("showName").text(value);
-            $("#showName").text($(this).val());
++            $("#showName").text($(this).val());
             
         });                
 
@@ -148,7 +148,7 @@ selector.index();
 4. submit() : 傳送表單內容到伺服器
 
 範例:
-```
+```diff
 <body>
     <div class="container">
         <form id="myform" action="http://192.168.37.200:8080/get.jsp"  >            
@@ -174,20 +174,20 @@ selector.index();
     <script src="../js/jquery-3.6.0.min.js"></script>
     <script>
         //focus,blur
-        $("#idInp").focus(function(){
-            $(this).css("background-color","gray");
-            console.log("focus"); 
++        $("#idInp").focus(function(){
++            $(this).css("background-color","gray");
++            console.log("focus"); 
             
             
-        }).blur(function(){
-            console.log("blur");
-            $(this).css("background-color","lightcoral");
++        }).blur(function(){
++            console.log("blur");
++            $(this).css("background-color","lightcoral");
             
-        }).change(function(){
-            console.log("change");
-        })
++        }).change(function(){
++            console.log("change");
++        })
 
-        //change
++        //change
         $("#idSel").change(function(){
             console.log("change");
             //讀取option的值
@@ -204,7 +204,7 @@ selector.index();
                     
         });
         
-        //submit
++        //submit
         $("#idbtn").click(function(){
                                                           
             if($("#idInp").val()==""){
@@ -216,7 +216,7 @@ selector.index();
             }
         });
 
-        $("#myform").submit(function(event){
+ +       $("#myform").submit(function(event){
             console.log("submit!"); 
             // console.log(event.type);
                         
