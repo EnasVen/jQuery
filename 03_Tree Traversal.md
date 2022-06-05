@@ -11,7 +11,7 @@
 > filter(**selector**) : ```$("li").filter(".item")``` : 回傳所有class="item"的li元素 
 
 範例:
-```
+```diff
 <body>
     <h2>languages table</h2>
     <table id="languages">
@@ -58,20 +58,20 @@
         //child Selector
         $("#btn1").click(function(){
             //每個tr的第一個td，背景設yellow(:first-child)                 
-            $("tr td:first-child").css("background-color","green");                 
++            $("tr td:first-child").css("background-color","green");                 
         });            
 
         //Traversing--filter
         $("#btn2").click(function(){
             //tr td的第一個td，背景設lightgreen(.first())
-            $("tr td:first").css("background-color","green");
-            $("tr td").first().css("background-color","green");  
++            $("tr td:first").css("background-color","green");
++            $("tr td").first().css("background-color","green");  
                                                         
         });
 
         $("#btn3").click(function(){
             //tr td的第一個td，背景設lightblue(.eq(0))
-            $("tr td").eq(0).css("background-color","green"); 
++            $("tr td").eq(0).css("background-color","green"); 
             // $("tr td:eq(0)").css("background-color","green"); 
                                                         
         });     
@@ -81,7 +81,7 @@
             // $("tbody tr").odd().css("background-color","black");
 
             //child filter 的 tbody tr的偶數列綠色 nth-child(even)，index從1開始
-            $("tbody tr:nth-child(odd)").css("background-color","gray");   // 要填色1 & 3列  需要使用even參數  因為CSS index從1開始
++            $("tbody tr:nth-child(odd)").css("background-color","gray");   // 要填色1 & 3列  需要使用even參數  因為CSS index從1開始
 
             // basic filter index從0開始 
             // $("tbody tr:odd").css("background-color","gray");
@@ -91,7 +91,7 @@
         $("#btn5").click(function(){  
             //filtering 的 tbody tr的偶數列黃色 .even()，index從0開始 
             //child filter 的 tbody tr的奇數列綠色 nth-child(odd)，index從1開始 
-            $("tbody tr:nth-child(2n)").css("background-color","lightgreen");
++           $("tbody tr:nth-child(2n)").css("background-color","lightgreen");
             
         });                                                                     
     </script>    
@@ -110,7 +110,7 @@ prev() action包含以下種類:
 > prevUntil([selector] , [filter]) : 回傳目前元素同一層中，符合filter條件且直到selector之後的所有元素  
 
 next和prev範例:
-```
+```diff
 <body>body(grandparent)
     <ul class="level-1" style="width:500px" >ul(direct parent)
         <li class="item-i">I</li>
@@ -136,27 +136,27 @@ next和prev範例:
     <script src="../js/jquery-3.6.0.min.js"></script>
     <script>
         $("#btn1").click(function(){                
-            $( ".item-iv" ).next().css( "border", "solid 3px green" ); //V
++            $( ".item-iv" ).next().css( "border", "solid 3px green" ); //V
         });
 
         $("#btn2").click(function(){               
-            $( ".item-iv" ).nextAll().css( "border", "solid 2px blue" );//V,VI,VII
++            $( ".item-iv" ).nextAll().css( "border", "solid 2px blue" );//V,VI,VII
         }); 
 
         $("#btn3").click(function(){               
-            $( ".item-iv" ).nextUntil(".item-vii").css( "border", "solid 2px red" );  //V,VI
++            $( ".item-iv" ).nextUntil(".item-vii").css( "border", "solid 2px red" );  //V,VI
         });  
 
         $("#btn4").click(function(){                
-            $( ".item-iv" ).prev().css( "border", "solid 3px green" ); //III
++            $( ".item-iv" ).prev().css( "border", "solid 3px green" ); //III
         });
 
         $("#btn5").click(function(){               
-            $( ".item-iv" ).prevAll().css( "border", "solid 2px blue" );  //III,II,I
++            $( ".item-iv" ).prevAll().css( "border", "solid 2px blue" );  //III,II,I
         }); 
 
         $("#btn6").click(function(){               
-            $( ".item-iv" ).prevUntil(".item-i").css( "border", "solid 2px red" );  //III,II
++            $( ".item-iv" ).prevUntil(".item-i").css( "border", "solid 2px red" );  //III,II
         });         
     </script>
 </body>
@@ -170,7 +170,7 @@ parent() action包含以下種類:
 > parentsUntil([selector] , [filter]) : 回傳目前元素的上面所有層級，符合filter條件且直到selector之下的所有層級元素
 
 parent範例:
-```
+```diff
 head>
     <meta charset="UTF-8">
     <title>04parentTraversing.html</title>
@@ -211,16 +211,16 @@ head>
     <script src="../js/jquery-3.6.0.min.js"></script>
     <script>
         $("#btn1").click(function(){
-            $(".item-b").parent().css( "border", "solid 2px red" );
++            $(".item-b").parent().css( "border", "solid 2px red" );
         });
 
         $("#btn2").click(function(){
-            // $(".item-b").parents("ul").css( "border", "solid 2px green" ); //只有ul
-            $(".item-b").parents().css( "border", "solid 2px green" );  //ul,li,body,html              
++            // $(".item-b").parents("ul").css( "border", "solid 2px green" ); //只有ul
++            $(".item-b").parents().css( "border", "solid 2px green" );  //ul,li,body,html              
         });
 
         $("#btn3").click(function(){    
-            $( ".item-b" ).parentsUntil('body').css( "border", "solid 2px blue" );  //body以下即ul,li           
++            $( ".item-b" ).parentsUntil('body').css( "border", "solid 2px blue" );  //body以下即ul,li           
         });
 
         $("#btn4").click(function(){ 
@@ -236,7 +236,7 @@ child() action包含以下種類:
 > find(selector) : 回符合selector的所有層級子元素  
 
 child範例:
-```
+```diff
 <head>
     <meta charset="UTF-8">
     <title>05descendantsTraversing.html</title>
@@ -277,8 +277,8 @@ child範例:
     <script src="../js/jquery-3.6.0.min.js"></script>
     <script>
         $("#btn1").click(function(){
-            $( "ul .item-ii" ).children().css( "border", "solid 2px red" );  //ul 
-            // $( "ul .level-2" ).children().css( "border", "solid 2px red" );  //多個li,只找一層
++            $( "ul .item-ii" ).children().css( "border", "solid 2px red" );  //ul 
++            // $( "ul .level-2" ).children().css( "border", "solid 2px red" );  //多個li,只找一層
 
             //.level-2的children是.item-a,.item-b,.item-c多個兒子         
         });
@@ -300,8 +300,8 @@ child範例:
 > siblings([selector]) : 回傳自己以外同層級的所有元素
 > end() : 結束目前chain搜尋的所有過濾操作，將符合的選擇器返回到先前狀態!(回到$符號)
 
-siblings範例
-```
+siblings和end範例
+```diff
 <head>
     <meta charset="UTF-8">
     <title>06siblingendTraversing.html</title>
@@ -340,14 +340,14 @@ siblings範例
     <script src="../js/jquery-3.6.0.min.js"></script>
     <script>
         $("#btn1").click(function(){
-            $( ".item-iv" ).siblings().css( "border", "solid 2px aqua" );  //I,II,II,V,VI,VII             
++            $( ".item-iv" ).siblings().css( "border", "solid 2px aqua" );  //I,II,II,V,VI,VII             
         });
 
         $("#btn2").click(function(){
             $( "ul.level-1" )
                 .find(".item-a")
                 .css( "border", "solid 2px blue" )
-                .end()
++                .end()
                 .find(".item-ii")
                 .css("border","solid 2px red");         
         });
@@ -355,10 +355,7 @@ siblings範例
 </body>
 ```
 
-end範例:
-```
-詳見寶可夢圖片選擇實作!
-```
+
 # Closest
 
 # Bootstrap5
