@@ -1,4 +1,5 @@
 # jQuery
+records of learning path on jQuery !
 
 ## Basic Course
 basic code and syntax
