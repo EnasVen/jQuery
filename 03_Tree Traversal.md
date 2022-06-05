@@ -354,8 +354,15 @@ siblings和end範例
     </script>
 </body>
 ```
-
+**jQuery查詢是根據DOM tree，往返越多次效能越差，因此使用end()能有效節省資源!**
 
 # Closest
+> closest(selector) : 回傳自己或者最接近自己的上一層元素，不像parent一樣，closest會繼續往上搜尋直到找到為止。  
+
 
 # Bootstrap5
+Google搜尋Boostrap5可使用現成版型，包含樣式與位置，只需link樣式進HTML文件即可!  
+例如: 
+```
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+```
