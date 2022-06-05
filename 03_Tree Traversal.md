@@ -99,3 +99,74 @@
 ```
 
 # Next & Prev
+next() action包含以下種類:
+> next([selector]) : 回傳目前元素同一層中的下一個元素(這個下一個元素可以使用jQuery selector達成條件搜尋)  
+> nextAll([selector]) : 回傳目前元素同一層中後面的所有元素  
+> nextUntil([selector] , [filter]) : 回傳目前元素同一層中，符合filter條件且直到selector之前的所有元素  
+
+prev() action包含以下種類:
+> prev([selector]) : 回傳目前元素同一層中的前一個元素(這個前一個元素可以使用jQuery selector達成條件搜尋)  
+> prevAll([selector]) : 回傳目前元素前一層中後面的所有元素  
+> prevUntil([selector] , [filter]) : 回傳目前元素同一層中，符合filter條件且直到selector之後的所有元素  
+
+next和prev範例:
+```
+<body>body(grandparent)
+    <ul class="level-1" style="width:500px" >ul(direct parent)
+        <li class="item-i">I</li>
+        <li class="item-ii">II</li>
+        <li class="item-iii">III</li>
+        <li class="item-iv">IV(self)
+          <ul class="level-2">ul(children)
+            <li class="item-a">A</li>            
+          </ul>
+        </li>
+        <li class="item-v">V</li>
+        <li class="item-vi">VI</li>
+        <li class="item-vii">VII</li>       
+      </ul>
+    <hr>
+    <input type="button" id="btn1" value="next()">
+    <input type="button" id="btn2" value="nextAll()"> 
+    <input type="button" id="btn3" value="nextUntil()"><br>
+    <input type="button" id="btn4" value="prev()">
+    <input type="button" id="btn5" value="prevAll()"> 
+    <input type="button" id="btn6" value="prevUntil()">
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+        $("#btn1").click(function(){                
+            $( ".item-iv" ).next().css( "border", "solid 3px green" ); //V
+        });
+
+        $("#btn2").click(function(){               
+            $( ".item-iv" ).nextAll().css( "border", "solid 2px blue" );//V,VI,VII
+        }); 
+
+        $("#btn3").click(function(){               
+            $( ".item-iv" ).nextUntil(".item-vii").css( "border", "solid 2px red" );  //V,VI
+        });  
+
+        $("#btn4").click(function(){                
+            $( ".item-iv" ).prev().css( "border", "solid 3px green" ); //III
+        });
+
+        $("#btn5").click(function(){               
+            $( ".item-iv" ).prevAll().css( "border", "solid 2px blue" );  //III,II,I
+        }); 
+
+        $("#btn6").click(function(){               
+            $( ".item-iv" ).prevUntil(".item-i").css( "border", "solid 2px red" );  //III,II
+        });         
+    </script>
+</body>
+```
+
+
+# Parent & Child
+
+# Siblings and End
+
+# Closest
+
+# Bootstrap5
