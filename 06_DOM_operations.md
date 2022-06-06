@@ -50,3 +50,64 @@ $("#btninsBefore").click(function(){
 
 示意圖如下:  
 ![Image](https://github.com/EnasVen/jQuery/blob/main/appendRelated.png)  
+
+# Selector 的 each
+類似迴圈的方式處理選擇器的類物件，語法範例如下:
+```
+$(JSselector).each(function(index,element){...})
+```
+其中index表示元素索引值，從0開始;element表示回傳的元素(JS物件)
+範例如下:
+```
+<script>
+    $("#btn1").click(function(){                             
+        $("li").each(function(index,element){
+            console.log($(this).text());
+            console.log($(element).text()); 
+            $("#demo").append(`<li>${$(this).text()}</li>`);                                               
+        });                  
+    });
+</script>
+```
+
+# jQuery 的 each
+1. jQuery.each(array , callback) : 
+    - 針對陣列中每個元素來處理，也可針對類陣列的資料型別處理  
+    - callback為 function(Integer index , Object value)，index為iterable物件的元素順序 
+2. jQuery.each(object , callback) :
+    - callback為 function(String propertyName , Object valueofProperty)
+
+範例: 
+```diff
+<body>
+    <div id="msg"></div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+   <script>
+       //  印出陣列內每一個元素的指標與內容
+       let ary=["item1", "item2", "item3"];
++        $.each(ary,function(index,value){
+            console.log(index+":"+value);
+        });
+
+        var data = {"emps":[
+                      {"name":"Tom","workYears":3,"salary":35000},
+                      {"name":"Jack","workYears":5,"salary":40000},
+                      {"name":"Mary","workYears":7,"salary":45000}
+                   ]};
+        // 印出JSON物件內的每一個元素
++        $.each(data,function(index,value){
+            console.log(index);
+            console.log(value);
+            $.each(value,function(index2,value2){
+                // console.log(value2);
+                n = value2.name;
+                wy=value2.workYears;
+                sl=value2.salary;
+                $("#msg").append(`<li>${n},${wy},${sl}</li>`)
+            })
+        })
+   </script> 
+</body>
+```
+上面的範例內，第2個範例，console.log會印出JSON物件的propertyName，也就是emps這個屬性，並以字串表示。  
+而下一個console.log則會印出屬性值，也就是包含3個object物件的list!  
