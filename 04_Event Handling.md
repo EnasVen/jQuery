@@ -141,6 +141,16 @@ selector.index();
     </script>
 ```
 
+取消Ctrl+C的複製:
+```
+$(document).keydown(function(event){
+    if(event.ctrlKey && event.which=="67"){
+        event.preventDefault();
+        window.alert("Do not Copy!");
+    }
+});    
+```
+
 # 表單事件
 1. focus() : 游標移入元素時觸發
 2. blur() : 游標離開元素時觸發
