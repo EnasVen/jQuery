@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="utf-8">
+  <title>work02</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+  <img id="img1" class="i" src="images/star.gif" />
+  <img id="img2" class="i" src="images/star.gif" />
+  <img id="img3" class="i" src="images/star.gif" />
+  <img id="img4" class="i" src="images/star.gif" />
+  <img id="img5" class="i" src="images/star.gif" />
+  <div>
+    <p></p>
+  </div>
+
+  <script src="../js/jquery-3.6.0.min.js"></script>
+  <script>
+    // 建立事件處理函數
+    var idx = true;
+
+    var handlerA = function () {
+      $(this).prevAll().addBack().prop("src", "images/chngstar.gif");
+      $("div p:first").text(`${this.id.charAt(3)} stars selected !`);
+      idx = true;
+    }
+    var handlerB = function () {
+      $(this).prevAll().addBack().prop("src", "images/star.gif");
+      $("div p:first").text("rating plz");
+      idx = true;
+    }
+    // 移除hover事件  要使用off並且移除mouseenter & mouseleave
+    $("img").hover(handlerA, handlerB)
+    $("img").click(
+      function () {
+        if (idx) {
+          $("div p:first").text(`Final rating : ${this.id.charAt(3)} star(s)`);
+          $("img").off("mouseenter");
+          $("img").off("mouseleave");
+          idx = false;
+        }
+
+      }
+    )
+
+    $("img").dblclick(
+      function () {
+        if (idx == false) {
+          $("div p:first").text("Restart");
+          $("Img").prop("src", "images/star.gif");
+          $("img").on("mouseenter", handlerA);
+          $("img").on("mouseleave", handlerB);
+        }
+
+      }
+    )
+
+  </script>
+</body>
+
+</html>

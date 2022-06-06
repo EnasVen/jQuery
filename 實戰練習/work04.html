@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>work04</title>
+    <style>
+        img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        #div1 {
+            position: absolute;
+            width: 400px;
+            height: 300px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="div1">
+        <img id="image1" src="images/tesla1.jpg">
+    </div>
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+        move_div();
+
+        //當視窗放大或縮小時呼叫move_div的函式
+        //讓div1置中
+        $(window).resize(adjustDiv).resize(move_div);
+
+        function move_div() {
+            let windowHeight = $(this).height();
+            let windowWidth = $(this).width();
+            let objHeight = $("#div1").height();
+            let objWidth = $("#div1").width();
+
+            let top = (windowHeight - objHeight) / 2;
+            let left = (windowWidth - objWidth) / 2;
+
+            $("#div1").css("top", top).css("left", left);
+        }
+
+        function adjustDiv() {
+            let windowHeight = $(this).height();
+            let windowWidth = $(this).width();
+            let objHeight = $("#div1").height();
+            let objWidth = $("#div1").width();
+
+            let topRatio = Math.floor(100 * objHeight / windowHeight);
+            let leftRatio = Math.floor(100 * objWidth / windowWidth);
+
+            $("#div1").css("width", `${leftRatio}%`).css("height", `${topRatio}%`);
+        }
+    </script>
+</body>
+
+</html>
