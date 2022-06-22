@@ -21,7 +21,7 @@ jQuery主要分為以下2種:
 > $(":button") : 選取type為butto以及標籤是button的元素  
 > $(":checkbox") :  選取type為checkbox的所有元素  
 > $(":checked") : 選取屬性為checked(被勾選)的所有元素，注意除了input標籤之外，select標籤內的option selected也算!  
-> $(":selected") : 選取屬性為selected的所有元素，只計算selected底下有選擇的options
+> $(":selected") : 選取屬性為selected的所有元素，只計算selected底下有選擇的options  
 > $(":disabled") : 選取屬性為disable的所有元素  
 > $(":enable") : 選取屬性為enable的所有元素  
 > $(":file") : 選取type為file的所有元素  
