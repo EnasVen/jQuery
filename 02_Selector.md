@@ -36,14 +36,14 @@ jQuery主要分為以下2種:
 
 # Attribute Selector
 透過屬性名稱與屬性值來做選取:  
-> $("tag[attr]") : 選擇有attr屬性的任何tagt元素  
+> $("tag[attr]") : 選擇有attr屬性的任何tag元素  
 > $("tag[attr=value]") : 選擇attr屬性值為value的所有tag元素  
 > $("tag[attr!=value]") : 選擇attr屬性值不為value的所有tag元素  
 > $("tag[attr^=value]") : 選擇attr屬性值開頭為value的所有tag元素  
 > $("tag[attr*=value]") : 選擇attr屬性值內包含value的所有tag元素  
 > $("tag[attr$=value]") : 選擇attr屬性值以value結尾的所有tag元素  
 > $("tag[attr|=value]") : 選擇attr屬性值為value或value-的所有tag元素  
-> $("tag[attr1][attr2$=value]") : 複合是寫法，選擇attr1屬性值內，所有attr2屬性值為value的所有tag元素  
+> $("tag[attr1][attr2$=value]") : 複合寫法，選擇attr1屬性值內，所有attr2屬性值為value的所有tag元素  
 
  
 # Hierarchy Selector
